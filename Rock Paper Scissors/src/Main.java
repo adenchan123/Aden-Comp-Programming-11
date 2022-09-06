@@ -1,12 +1,26 @@
 import java.util.Scanner;
 public class Main {
     public static void main(String args[]){
+
+
+
         Scanner scan = new Scanner(System.in); //prepares program for user input
-        System.out.println("Choose rock paper or scissors. 'r' for rock 'p' for paper, or 's' for scissors."); //Game instructions
+        int playerScore = 0;
+        int computerScore = 0;
+        System.out.println("Choose rock paper or scissors. 'r' for rock 'p' for paper, or 's' for scissors.  Choose 'x' to exit the game."); //Game instructions
+        System.out.println("**********************************************************");
+
+        while(true){
+
+            System.out.println("Player's choice:");
         char choice = scan.next().charAt(0); //The player's choice will be the letter inputted.
+            if(choice == 'x'){
+                break;
+            }
         int random = (int)(Math.random()*99 + 1); //math random creates a number between 0-1 (e.g. 0.125121313135)
         //this is converted into a integer from 1-99
         char computer;
+
 
         if (random <= 33){
             computer = 'r'; //if number is from 1-33 computer will choose rock
@@ -26,16 +40,19 @@ public class Main {
         else if((choice == 'r') && (computer == 'p')){
             System.out.println("lose!\n");
             System.out.println("Computer Choice: Paper\t\tPlayer Choice: Rock");
+            computerScore ++;
 
         }
         else if(choice == 'r'){
             System.out.println("win!\n");
             System.out.println("Computer Choice: Scissors\t\tPlayer Choice: Rock");
+            playerScore ++;
         // the possible outcomes if you choose rock
         }
         else if((choice == 'p') && (computer == 'r')){
             System.out.println("win!\n");
             System.out.println("Computer Choice: Rock\t\tPlayer Choice: Paper");
+            playerScore ++;
 
         }
         else if((choice == 'p') && (computer == 'p')){
@@ -46,16 +63,19 @@ public class Main {
         else if(choice == 'p'){
             System.out.println("lose!\n");
             System.out.println("Computer Choice: Scissors\t\tPlayer Choice: Paper");
+            computerScore ++;
         // the possible outcomes if you choose paper
         }
         else if((choice == 's') && (computer == 'r')){
             System.out.println("lose!\n");
             System.out.println("Computer Choice: Rock\t\tPlayer Choice: Scissors");
+            computerScore ++;
 
         }
         else if((choice == 's') && (computer == 'p')){
             System.out.println("win!\n");
             System.out.println("Computer Choice: Paper\t\tPlayer Choice: Scissors");
+            playerScore ++;
 
         }
         else if(choice == 's'){
@@ -67,10 +87,13 @@ public class Main {
         else {
             System.out.println("Invalid selection.  Please try again."); //error message for when user does not input r,p, or s.
         }
+            System.out.println("Player score: " + playerScore + "\tComputer score: " + computerScore);
+            System.out.println("\n**********************************************************\n");
+
 
 
 
 
 
     }
-}
+}}
